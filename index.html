@@ -33,7 +33,7 @@ async function advance(skip=false){if(busy)return;const id=config.presentation_o
 function render(){
  $('career-output').hidden=true;const p=report.experience;
  $('type-name').textContent=p.name;$('type-code').textContent=report.full_code;
- $('portrait-art').src='portraits/'+report.subtype_code+'.png';$('portrait-art').alt=report.profile.name+' · 中性卡通形象';$('portrait-second').hidden=true;
+ $('portrait-art').src='portraits/'+report.subtype_code+'.png';$('portrait-art').alt=report.profile.name+' · 职业探索小精灵';$('portrait-second').hidden=true;
  $('experience-note').textContent='核心组别 '+report.core_code+' · '+(report.all_near_center?'参考角色：'+report.profile.name+'。':'')+p.note;
  $('tagline').textContent=p.tagline;$('english-name').textContent=report.profile.english;$('portrait').textContent=p.portrait;
  $('strength').textContent=report.all_near_center?'暂不据此推断偏好优势。':'偏好优势：'+report.profile.strength;
