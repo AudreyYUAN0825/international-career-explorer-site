@@ -3,7 +3,7 @@ let requestId=0;
 const pending=new Map();
 function makeWorker(){
   if(engineWorker)return engineWorker;
-  engineWorker=new Worker(new URL('./worker.js?v=ed42ccabdc91',document.baseURI),{type:'module'});
+  engineWorker=new Worker(new URL('./worker.js?v=6688f903999f',document.baseURI),{type:'module'});
   engineWorker.onmessage=({data})=>{const entry=pending.get(data.id);if(!entry)return;clearTimeout(entry.timer);pending.delete(data.id);if(data.diagnostic)console.error(data.diagnostic);entry.resolve({ok:data.ok,json:async()=>data.data});};
   engineWorker.onerror=()=>{for(const entry of pending.values()){clearTimeout(entry.timer);entry.reject(new Error('浏览器未能加载计算组件，请刷新重试'));}pending.clear();engineWorker.terminate();engineWorker=null;};
   return engineWorker;
